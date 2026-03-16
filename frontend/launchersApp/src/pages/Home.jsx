@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import LauncherInTable from '../comps/LauncherInTable'
 import SelectRocketType from '../comps/SelectRocketType'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 export default function Home({ launchers, setIdForDetailsPage }) {
     const [search, setSearch] = useState('')
@@ -13,6 +13,7 @@ export default function Home({ launchers, setIdForDetailsPage }) {
     }
     return (
         <div className='flex flex-col gap-3'>
+            <Link className='self-center border rounded-2xl p-2 mt-2 bg-gray-400 hover:bg-gray-500' to={'/add_launcher'}>Add Launcher</Link>
             <div className='pl-3 self-center'>
                 <label htmlFor="search">search: </label>
                 <input className='pl-1 border rounded border-gray-600' type="text" placeholder='search' onChange={e => setSearch(e.target.value)} />
