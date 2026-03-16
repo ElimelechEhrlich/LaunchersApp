@@ -13,10 +13,6 @@ export async function getLaunchers(req, res) {
 export async function getLaunchersById(req, res) {
     try {
         const launcher = await getDataById(req.params.id)
-        console.log(launcher);
-        console.log(req.params.id);
-
-        
         if (launcher) res.json(launcher)
         else res.status(404).json({message: 'launcher not found.'})
     } catch (error) {
