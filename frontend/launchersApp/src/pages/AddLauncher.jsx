@@ -1,4 +1,5 @@
 import React from 'react'
+import SelectRocketType from '../comps/SelectRocketType'
 
 export default function AddLauncher() {
     return (
@@ -8,16 +9,7 @@ export default function AddLauncher() {
                     <label htmlFor="name">name:</label>
                     <input placeholder='enter name' className='pl-1 border rounded border-black' type="text" name='name' />
                 </div>
-                <div className='w-[80%] self-center flex flex-col justify-between'>
-                    <label htmlFor="rocketType">rocketType:</label>
-                    <select className='w-full border rounded border-black' name="rocketType" id="rocketType">
-                        <option value="Choose">choose</option>
-                        <option value="Shahab3">Shahab3</option>
-                        <option value="Fetah110">Fetah110</option>
-                        <option value="Radwan">Radwan</option>
-                        <option value="Kheibar">Kheibar</option>
-                    </select>
-                </div>
+                <SelectRocketType firstOption='choose'/>
                 <div className='w-[80%] self-center flex flex-col justify-between'>
                     <label htmlFor="latitude">latitude:</label>
                     <input placeholder='enter latitude' className='pl-1 border rounded border-black' type="number" name='latitude' />

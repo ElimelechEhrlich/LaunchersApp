@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "city": "a",
+        "rocketType": "Shahab3",
+        "latitude": 3,
+        "longitude": 2,
+        "name": "dsfsad"
+    },
+    {
+        "id": 2,
+        "city": "a",
+        "rocketType": "Fetah110",
+        "latitude": 3,
+        "longitude": 2,
+        "name": "dsfsad"
+    },
+    {
+        "id": 3,
+        "city": "b",
+        "rocketType": "Radwan",
+        "latitude": 3,
+        "longitude": 2,
+        "name": "dsfsad"
+    },
+    {
+        "id": 4,
+        "city": "c",
+        "rocketType": "Kheibar",
+        "latitude": 3,
+        "longitude": 2,
+        "name": "dsfsad"
+    }
+]
