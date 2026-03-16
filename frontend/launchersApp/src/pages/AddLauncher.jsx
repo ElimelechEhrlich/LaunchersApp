@@ -9,7 +9,7 @@ export default function AddLauncher() {
                     <label htmlFor="name">name:</label>
                     <input placeholder='enter name' className='pl-1 border rounded border-black' type="text" name='name' />
                 </div>
-                <SelectRocketType firstOption='choose'/>
+                <SelectRocketType firstOption='choose' setFunction={''} flex_direction='col'/>
                 <div className='w-[80%] self-center flex flex-col justify-between'>
                     <label htmlFor="latitude">latitude:</label>
                     <input placeholder='enter latitude' className='pl-1 border rounded border-black' type="number" name='latitude' />
