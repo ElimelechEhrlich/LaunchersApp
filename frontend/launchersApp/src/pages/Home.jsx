@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router'
 
 export default function Home({ launchers, setIdForDetailsPage }) {
     const [search, setSearch] = useState('')
-    const [typeFilter, setTypeFilter] = useState('')
+    const [typeFilter, setTypeFilter] = useState('All')
     const navigate = useNavigate()
     function launcherClickHendler(e) {
         setIdForDetailsPage(e.target.id)
