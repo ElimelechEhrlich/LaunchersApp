@@ -6,9 +6,7 @@ export default function AddLauncher() {
     function onChangeRocketType(e) {
         e.preventDefault()
         localStorage.setItem('rocketType', e.target.value)
-    }
-}
-    
+    }   
 return (
     <div className='w-full h-screen justify-center'>
         <form className='p-3 gap-5 border justify-around rounded flex flex-col w-[30%]'>
