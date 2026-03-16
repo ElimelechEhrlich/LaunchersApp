@@ -1,18 +1,24 @@
-import { Route, Routes } from "react-router";
-import data from '../src/pages/db.json' with {type: "json"}
+import { Route, Routes, useNavigate } from "react-router";
+// import data from '../src/pages/db.json' with {type: "json"}
 import AddLauncher from "./pages/AddLauncher";
 import Home from "./pages/Home";
 import LauncherDetails from "./pages/LauncherDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFetch } from "./hooks/useFetch.js";
 
 export default function App() {
-  const [launchers, setLaunchers] = useState(data)
+  const [launchers] = useFetch("http://localhost:3000/api/launchers");
+  const [idForDetailsPage, setIdForDetailsPage] = useState(null)
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate('/home')
+  },[])
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home launchers={launchers} />}/>
-        <Route path="/add_launcher" element={<AddLauncher />}/>
-        <Route path="/launcher_details" element={<LauncherDetails launchers={launchers} />}/>
+        <Route path="/home" element={<Home launchers={launchers} setIdForDetailsPage={setIdForDetailsPage}/>} />
+        <Route path="/add_launcher" element={<AddLauncher />} />
+        <Route path="/launcher_details/:id" element={<LauncherDetails idForDetailsPage={idForDetailsPage} />} />
       </Routes>
     </>
   )
