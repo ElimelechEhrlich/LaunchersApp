@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 import { useFetch } from "./hooks/useFetch.js";
 
 export default function App() {
-  const [launchers] = useFetch("http://localhost:3000/api/launchers");
+  const launchers = useFetch("http://localhost:3000/api/launchers");
   const [idForDetailsPage, setIdForDetailsPage] = useState(null)
+
   const navigate = useNavigate()
   useEffect(() => {
     navigate('/home')
   },[])
+
   return (
     <>
       <Routes>

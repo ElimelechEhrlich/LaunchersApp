@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import LauncherInTable from '../comps/LauncherInTable'
 import SelectRocketType from '../comps/SelectRocketType'
-import { Navigate, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 
 export default function Home({ launchers, setIdForDetailsPage }) {
     const [search, setSearch] = useState('')
     const [typeFilter, setTypeFilter] = useState('')
     const navigate = useNavigate()
     function launcherClickHendler(e) {
-        // console.log(e.target.id);
-        // setIdForDetailsPage(e.target.id)
-        // localStorage.setItem(id, e.target.id)
+        setIdForDetailsPage(e.target.id)
         navigate(`/launcher_details/${e.target.id}`)
     }
     return (
