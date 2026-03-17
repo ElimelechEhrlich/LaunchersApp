@@ -1,25 +1,40 @@
-import { create, getData, getDataById } from "../DAL/launcherD.js";
-import { validateLauncherFieldsTypes } from "../services/launchersS.js";
+import { createLauncher, getAllLaunchers, findLauncherById, updateLauncher } from "../DAL/launcherD.js";
+import { validateLauncherFieldsTypes, validateUpdateRequest } from "../services/launchersS.js";
 
 export async function getLaunchers(req, res) {
     try {
-        const launchers = await getData()
+        const launchers = await getAllLaunchers()
         res.json(launchers)
     } catch (error) {
         console.error({ error });
         res.status(500).json()
     }
 }
-export async function getLaunchersById(req, res) {
+export async function getLauncherById(req, res) {
     try {
-        const launcher = await getDataById(req.params.id)
+        const launcher = await findLauncherById(req.params.id)
         if (launcher) res.json(launcher)
-        else res.status(404).json({message: 'launcher not found.'})
+        else res.status(404).json({ message: 'launcher not found.' })
     } catch (error) {
         console.error({ error });
         res.status(500).json()
     }
 }
+
+export async function editLauncher(req, res) {
+    const payload = req.user
+    if (!payload || !validateUpdateRequest(req.body.id, req.body, payload.role)) return res.status(401).json({ message: "authentication failed." })
+    try {
+        const updatedLauncher = await updateLauncher(req.body.id, req.body)
+        if (updatedLauncher) res.json(updatedLauncher)
+        else res.status(404).json({ message: 'launcher not found.' })
+    } catch (error) {
+        console.error({ error });
+        res.status(500).json()
+    }
+}
+
+// const result = await launchers.updateOne({ _id: new ObjectId(id) }, { $set: {} })({ _id: new ObjectId(id) });
 
 export async function addLauncher(req, res) {
     try {
@@ -27,8 +42,8 @@ export async function addLauncher(req, res) {
             const { city, rocketType, latitude, longitude, name } = req.body
             const newLauncher = { city, rocketType, latitude, longitude, name }
             if (validateLauncherFieldsTypes(newLauncher)) {
-                const launcherId = await create(newLauncher)
-                res.json({message: `launcher created with id: ${launcherId}`})
+                const launcherId = await createLauncher(newLauncher)
+                res.json({ message: `launcher created with id: ${launcherId}` })
             } else res.status(400).json({ message: 'invalid fields.' })
         } else res.status(400).json({ message: 'missing fields.' })
     } catch (error) {

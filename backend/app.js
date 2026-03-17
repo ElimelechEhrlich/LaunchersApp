@@ -3,6 +3,7 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import connection from './db/nongoDb.js'
 import launchersRouter from './routers/launchersR.js'
+import userAuthRouter from './routers/userAuthR.js'
 config()
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 
 
 app.use('/api/launchers', launchersRouter)
+app.use('/api/auth', userAuthRouter)
 
 
 

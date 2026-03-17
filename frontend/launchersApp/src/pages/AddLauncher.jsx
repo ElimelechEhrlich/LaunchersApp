@@ -4,8 +4,9 @@ import { useFetch } from '../hooks/useFetch'
 
 export default function AddLauncher() {
     function onChangeRocketType(e) {
-        e.preventDefault()
         localStorage.setItem('rocketType', e.target.value)
+        console.log(localStorage);
+        
     }   
 return (
     <div className='w-full h-screen justify-center'>
