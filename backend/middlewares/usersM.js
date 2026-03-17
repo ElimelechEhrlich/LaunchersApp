@@ -17,7 +17,7 @@ export function intelligenceCorpsAuth(req, res, next) {
     const payload = req.user
     console.log(payload);
     try {
-        if (!isIntelligenceCorpsPermitted(payload.role)) return res.status(401).json({ message: "authentication failed, Incompatible permission." })
+        if (!isIntelligenceCorpsPermitted(payload.user_type)) return res.status(401).json({ message: "authentication failed, Incompatible permission." })
         next()
     } catch (error) {
         return res.status(500).json({ error })

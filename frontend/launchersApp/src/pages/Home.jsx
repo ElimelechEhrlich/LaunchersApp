@@ -2,6 +2,7 @@ import { useState } from 'react'
 import LauncherInTable from '../comps/LauncherInTable'
 import SelectRocketType from '../comps/SelectRocketType'
 import { Link, useNavigate } from 'react-router'
+import SelectDestroyed from '../comps/SelectDestroyed'
 
 export default function Home({ launchers, setIdForDetailsPage }) {
     const [search, setSearch] = useState('')

@@ -84,7 +84,7 @@ export async function userLogin(req, res) {
         if (!user) return res.status(400).json({ message: "user is not exists." })
         const token = jwt.sign({ _id: new ObjectId(user.id), username: user.username, email: user.email, user_type: user.user_type }, process.env.JWT_SECRET_KEY)
         const date = new Date()
-        await updateUser(user._id, { login_last: date })
+        await updateUser(user._id, { last_login: date })
         return res.status(201).json({ token })
     } catch (error) {
         console.error({ error });
